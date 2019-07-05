@@ -39,7 +39,6 @@
             android:id="@+id/btnView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="btnView"
             android:text="view"/>
 
     <TextView

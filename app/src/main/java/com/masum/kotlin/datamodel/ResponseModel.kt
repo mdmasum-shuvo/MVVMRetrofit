@@ -3,7 +3,7 @@ package com.masum.kotlin.datamodel
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ResponseModel {
+class ResponseModel  {
 
     @SerializedName("id")
     @Expose

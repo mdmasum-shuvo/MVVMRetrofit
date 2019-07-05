@@ -8,13 +8,13 @@ import com.masum.kotlin.repository.DataRepository
 
 class ViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var repository: DataRepository
+     var repository: DataRepository
 
     init {
         repository = DataRepository(application)
     }
 
-    val getData: MutableLiveData<List<ResponseModel>>
-        get() = repository.responseData
+    val getData: MutableLiveData<List<ResponseModel>>?
+        get() = repository!!.responseData()
 
 }
