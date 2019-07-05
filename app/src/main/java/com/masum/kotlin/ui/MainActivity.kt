@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 open class MainActivity : BaseActivity(), ServerRequestFailedListener {
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var viewModel: ViewModel
     private lateinit var adapter: DataAdapter
     override fun getLayoutResource(): Int {
         return R.layout.activity_main
@@ -23,6 +23,8 @@ open class MainActivity : BaseActivity(), ServerRequestFailedListener {
 
     override fun initComponent() {
         binding = getBinding as ActivityMainBinding
+        viewModel = ViewModelProviders.of(this).get(ViewModel::class.java)
+        viewModel.repository.setListener(this)
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
@@ -31,7 +33,6 @@ open class MainActivity : BaseActivity(), ServerRequestFailedListener {
 
     override fun listener() {
         btnView.setOnClickListener {
-            val viewModel = ViewModelProviders.of(this).get(ViewModel::class.java)
             viewModel.getData!!.observe(this, Observer { responseModel ->
                 Log.e("data", responseModel.toString())
                 adapter = DataAdapter(this, responseModel as List<ResponseModel>)
