@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.masum.kotlin.R
+import com.masum.kotlin.common.BaseActivity
 import com.masum.kotlin.datamodel.ResponseModel
 import com.masum.kotlin.listener.ServerRequestFailedListener
 import com.masum.kotlin.network.RetrofitClient
@@ -20,12 +21,16 @@ import retrofit2.Response
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), ServerRequestFailedListener {
-    //val viewModel :ViewModel(this)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity(), ServerRequestFailedListener {
+    override fun getLaoyutId(): Int {
+       return R.layout.activity_main
+    }
 
+    override fun functionality() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun listener() {
         btnView.setOnClickListener {
             val viewModel = ViewModelProviders.of(this).get(ViewModel::class.java)
             viewModel.getData!!.observe(this, Observer { responseModel ->
@@ -33,8 +38,9 @@ class MainActivity : AppCompatActivity(), ServerRequestFailedListener {
             })
 
             viewModel.repository.setListener(this)
-        }
-    }
+        }    }
+
+
 
     override fun onFailed(massage: String) {
       toasmsg(massage)
