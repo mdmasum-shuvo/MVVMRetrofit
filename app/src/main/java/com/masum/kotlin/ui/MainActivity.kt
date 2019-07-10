@@ -3,6 +3,7 @@ package com.masum.kotlin.ui
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.masum.kotlin.R
 import com.masum.kotlin.common.BaseActivity
