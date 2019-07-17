@@ -11,9 +11,8 @@ import retrofit2.Response
 
 class DataRepository(private val application: Application) {
 
-    var responseData = MutableLiveData<List<ResponseModel>>()
-
-    private lateinit var mListener: ServerRequestFailedListener
+   private var responseData = MutableLiveData<List<ResponseModel>>()
+   private lateinit var mListener: ServerRequestFailedListener
 
     fun responseData(): MutableLiveData<List<ResponseModel>>? {
 
